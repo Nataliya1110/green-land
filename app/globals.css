@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-wood: var(--wood);
+  --color-wood-dark: var(--wood-dark);
+  --color-forest: var(--forest);
+  --color-snow: var(--snow);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f4efe6;
+  --foreground: #2b2118;
+  --card: #fbf8f2;
+  --card-foreground: #2b2118;
+  --popover: #fbf8f2;
+  --popover-foreground: #2b2118;
+  --primary: #2f4a36;
+  --primary-foreground: #f7f3ea;
+  --secondary: #e7dccb;
+  --secondary-foreground: #3d2b1d;
+  --muted: #ebe3d6;
+  --muted-foreground: #6b5a49;
+  --accent: #9a6b3f;
+  --accent-foreground: #fbf8f2;
+  --destructive: #b4432f;
+  --border: #d9cbb6;
+  --input: #d9cbb6;
+  --ring: #2f4a36;
+  --wood: #9a6b3f;
+  --wood-dark: #3d2b1d;
+  --forest: #2f4a36;
+  --snow: #f7f5f0;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  html,
+  body,
+  * {
+    cursor: url('/cursor-twig.svg') 4 4, auto;
+  }
+  a,
+  button,
+  [role='button'],
+  summary,
+  label {
+    cursor: url('/cursor-twig-hover.svg') 4 4, pointer;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.14);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 28s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-slow-zoom {
+    animation: none;
+  }
+}
